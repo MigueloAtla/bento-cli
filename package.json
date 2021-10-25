@@ -1,0 +1,37 @@
+{
+  "name": "bento-cli",
+  "version": "0.0.5",
+  "description": "Frontend tools based on polymorphic SDS with extendable capabilities in top of styled-system and rebass.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "@migueloatla/generate-atom": "bin/generate-atom",
+    "generate-atom": "bin/generate-atom",
+    "@migueloatla/generate-molecule": "bin/generate-molecule",
+    "generate-molecule": "bin/generate-molecule"
+  },
+  "keywords": [
+    "cli",
+    "generate-atom",
+    "generate-molecule"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "arg": "^5.0.1",
+    "chalk": "^4.1.2",
+    "esm": "^3.2.25",
+    "inquirer": "^8.2.0",
+    "ncp": "^2.0.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "templates/"
+  ],
+  "author": "migueloatla",
+  "license": "ISC"
+}
