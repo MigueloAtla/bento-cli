@@ -49,7 +49,7 @@ export const atomStoriesTemplate = name => {
 import ${capitalized_name} from './'
 
 export default {
-  title: 'Components/${capitalized_name}',
+  title: 'Atoms/${capitalized_name}',
   component: ${capitalized_name}
 }
 

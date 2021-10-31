@@ -44,7 +44,15 @@ async function promptForMissingOptions (options) {
     type: 'list',
     name: 'type',
     message: 'Layout type:',
-    choices: ['Box', 'Flex', 'Row', 'Column', 'AutoColumns', 'Bento'],
+    choices: [
+      'Box',
+      'Flex',
+      'Row',
+      'Column',
+      'AutoColumns',
+      'Bento',
+      'Masonry'
+    ],
     default: 'Box'
   })
 

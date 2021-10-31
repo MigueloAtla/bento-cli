@@ -1,16 +1,27 @@
+import fs from 'fs'
+const basedir = process.cwd()
+let config = { imports: '' }
+try {
+  if (fs.existsSync(`${basedir}/.bento/config.js`)) {
+    config = require(`${basedir}/.bento/config.js`)
+  }
+} catch (err) {
+  console.error(err)
+}
+console.log(config)
 const capitalizeFirstLetter = string => {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
 export const atomIndexTemplate = (name, atoms) => {
   let imports = ''
+  const regex = /,}/g
   atoms.length > 0 &&
     atoms.map(atom => {
-      imports += `import ${capitalizeFirstLetter(
-        atom
-      )} from '@/atoms/${atom}'\n`
+      imports += ` ${capitalizeFirstLetter(atom)},`
     })
-
+  const import_statement = `import {${imports}} from '${config.imports}/atoms'`
+  let imports_clean = import_statement.replace(regex, ' }')
   let molecules = ''
   atoms.length > 0 &&
     atoms.map(atom => {
@@ -19,11 +30,11 @@ export const atomIndexTemplate = (name, atoms) => {
   const capitalized_name = capitalizeFirstLetter(name)
   return `import React from 'react'
 import { ${capitalized_name}Styled } from './styles'
-${atoms.length > 0 && imports}
+${atoms.length > 0 ? `${imports_clean}` : ''}
 const ${capitalized_name} = () => {
   return (
     <${capitalized_name}Styled>
-    ${atoms.length > 0 && molecules}
+    ${atoms.length > 0 ? molecules : ''}
     <p>${capitalized_name}</p>
     </${capitalized_name}Styled>
     )
@@ -64,7 +75,7 @@ export const atomStoriesTemplate = name => {
 import ${capitalized_name} from './'
 
 export default {
-  title: 'Components/${capitalized_name}',
+  title: 'Molecules/${capitalized_name}',
   component: ${capitalized_name}
 }
 

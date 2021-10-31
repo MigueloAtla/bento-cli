@@ -1,6 +1,6 @@
 {
   "name": "bento-cli",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Frontend tools based on polymorphic SDS with extendable capabilities in top of styled-system and rebass.",
   "main": "src/index.js",
   "scripts": {
@@ -9,6 +9,8 @@
   "bin": {
     "@migueloatla/generate-atom": "bin/generate-atom",
     "generate-atom": "bin/generate-atom",
+    "@migueloatla/bento-config": "bin/bento-config",
+    "bento-config": "bin/bento-config",
     "@migueloatla/generate-molecule": "bin/generate-molecule",
     "generate-molecule": "bin/generate-molecule"
   },
